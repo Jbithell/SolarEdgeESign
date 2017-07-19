@@ -28,11 +28,11 @@ function round(value, precision) {
 //Data conversion function
 var convertdata = function(data) {
     if (data < 1001) {
-        return round(data,0) + "Wh";
+        return round(data,0) + " <sub>Wh</sub>";
     } else if (data > 1000000) {
-        return round(data/1000000,2) + "MWh";
+        return round(data/1000000,2) + " <sub>MWh</sub>";
     } else {
-        return round(data/1000,2) + "kWh";
+        return round(data/1000,1) + " <sub>kWh</sub>";
     }
 };
 
