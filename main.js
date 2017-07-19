@@ -18,10 +18,13 @@
     })(window.location.search.substr(1).split('&'))
 })(jQuery);
 
+//Rounding Function
 function round(value, precision) {
     var multiplier = Math.pow(10, precision || 0);
     return Math.round(value * multiplier) / multiplier;
 }
+
+//Data conversion function
 var convertdata = function(data) {
     if (data < 1001) {
         return round(data,0) + "Wh";
@@ -36,10 +39,12 @@ var convertdata = function(data) {
 //Begin code
 var sitecode = $.QueryString["code"];
 var apikey = $.QueryString["key"];
-
+Raven.config('https://80f81db62c76465399b0b3bbd2873f25@sentry.io/193568').install()
 
 
 var getdata = function () {
+    console.log("Updating Data");
+
     var oneyearago = new Date();
     oneyearago.setTime(oneyearago.getTime() - 12614200000);
 
@@ -76,8 +81,7 @@ var getdata = function () {
         },
         "error": function (d, msg) {
             //HTTP 403 – forbidden s - if number of requests exceeds 300
-
-            console.log(msg);
+            Raven.captureMessage(msg)
         }
     });
     $.jsonp({
@@ -135,7 +139,7 @@ var getdata = function () {
             });
         },
         "error": function (d, msg) {
-           console.log(msg);
+            Raven.captureMessage(msg);
         }
     });
 };
@@ -151,6 +155,8 @@ $( document ).ready(function() {
             var dateForNowHour = new Date(); // for now
             if (dateForNowHour.getHours() > 6 && dateForNowHour.getHours() < 21) { //Start display just after 6 and stop updating it around 9pm -> There's no point as there's no more sunshine!!!
                 getdata();
+            } else {
+                console.log("Not updating because of dusk hours");
             }
         }, 1000 * 60 * 30);
     }
