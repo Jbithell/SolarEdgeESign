@@ -39,7 +39,6 @@ var convertdata = function(data) {
 //Begin code
 var sitecode = $.QueryString["code"];
 var apikey = $.QueryString["key"];
-Raven.config('https://80f81db62c76465399b0b3bbd2873f25@sentry.io/193568').install()
 
 
 var getdata = function () {
@@ -81,7 +80,7 @@ var getdata = function () {
         },
         "error": function (d, msg) {
             //HTTP 403 – forbidden s - if number of requests exceeds 300
-            Raven.captureMessage(msg)
+            console.log(msg)
         }
     });
     $.jsonp({
@@ -139,7 +138,7 @@ var getdata = function () {
             });
         },
         "error": function (d, msg) {
-            Raven.captureMessage(msg);
+            console.log(msg)
         }
     });
 };
