@@ -136,6 +136,7 @@ var getdata = function () {
                     },
                 }
             });
+            $("#lastupdated").html("Updated: " + Date());
         },
         "error": function (d, msg) {
             console.log(msg)
