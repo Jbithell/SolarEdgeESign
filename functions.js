@@ -20,8 +20,9 @@
 
 //Rounding Function
 function round(value, precision) {
-    var multiplier = Math.pow(10, precision || 0);
-    return Math.round(value * multiplier) / multiplier;
+    //var multiplier = Math.pow(10, precision || 0);
+    ///return Math.round(value * multiplier) / multiplier;
+    return value.toFixed(precision)
 }
 
 //Data conversion function
@@ -29,9 +30,9 @@ var convertdata = function(data) {
     if (data < 1001) {
         return round(data,0) + "Wh";
     } else if (data > 1000000) {
-        return round(data/1000000,1) + "MWh";
+        return round(data/1000000,5) + "MWh";
     } else {
-        return round(data/1000,1) + "kWh";
+        return round(data/1000,2) + "kWh";
     }
 };
 
