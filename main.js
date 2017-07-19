@@ -105,7 +105,7 @@ var getdata = function () {
 $( document ).ready(function() {
     sitecode = $.QueryString["code"];
     apikey = $.QueryString["key"];
-    if (sitecode.length <6 || apikey.length <1 ) {
+    if (typeof sitecode === 'undefined' || !sitecode || typeof apikey === 'undefined' || !apikey || sitecode.length <6 || apikey.length <1 ) {
         bootbox.dialog({
             message: '<p class="text-center">Please pass a code and api key as get parameters - see <a target="_blank" href="https://github.com/Jbithell/SolarEdgeESign/blob/master/README.md">documentation</a></p>',
             closeButton: false
