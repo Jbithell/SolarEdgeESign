@@ -30,7 +30,7 @@ var convertdata = function(data) {
     if (data < 1001) {
         return round(data,0) + "Wh";
     } else if (data > 1000000) {
-        return round(data/1000000,5) + "MWh";
+        return round(data/1000000,2) + "MWh";
     } else {
         return round(data/1000,2) + "kWh";
     }
