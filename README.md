@@ -25,6 +25,8 @@ The data on the screen is refreshed every `30 minutes` (from the time it was fir
 
 This system supports screens with a black background - just pass `&black=true` as part of the URL
 
+## Screenshots
+
 ![Screenshot1](misc/screenshots/screenshots.png)
 
 ![Screenshot2](misc/screenshots/screenshotsblack.png)
