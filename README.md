@@ -1,7 +1,7 @@
 # SolarEdgeESign
 Website to display data for a solar edge PV array on a planet e-sign display (as an embedded site) 
 ## Usage
-Load `index.html` in your browser passing `code` and `key` as get parameters.
+Load `https://jbithell.github.io/SolarEdgeESign/index.html` in your browser passing `code` and `key` as get parameters.
 
 `code` is your site code, a six digit number
 
