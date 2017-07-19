@@ -51,7 +51,7 @@ var getdata = function () {
 
     var now = new Date();
     $.jsonp({
-        "url": "https://monitoringapi.solaredge.com/site/" + sitecode + "/energy.json?timeUnit=DAY&endDate=" + $.datepicker.formatDate('yy-mm-dd', new Date()) +  "&startDate=" + $.datepicker.formatDate('yy-mm-dd', oneyearago) + "&api_key=" + apikey + "&callback=?",
+        "url": "https://monitoringapi.solaredge.com/site/" + sitecode + "/energy.json?timeUnit=DAY&endDate=" + $.datepicker.formatDate('yy-mm-dd', new Date()) +  "&startDate=" + $.datepicker.formatDate('yy-mm-dd', oneyearago) + "&api_key=" + apikey + "&version=1.0.0&callback=?",
         "data": {},
         "success": function (data) {
             var thisdata = data.energy.values;
@@ -81,7 +81,7 @@ var getdata = function () {
         }
     });
     $.jsonp({
-        "url": "https://monitoringapi.solaredge.com/site/" + sitecode + "/power.json?&endTime=" + $.datepicker.formatDate('yy-mm-dd', now) + " " + now.getHours() + ":" + now.getMinutes() + ":00" + "&startTime=" + $.datepicker.formatDate('yy-mm-dd', oneweekago) + " 00:00:00&api_key=" + apikey + "&callback=?",
+        "url": "https://monitoringapi.solaredge.com/site/" + sitecode + "/power.json?&endTime=" + $.datepicker.formatDate('yy-mm-dd', now) + " " + now.getHours() + ":" + now.getMinutes() + ":00" + "&startTime=" + $.datepicker.formatDate('yy-mm-dd', oneweekago) + " 00:00:00&api_key=" + apikey + "&version=1.0.0&callback=?",
         "data": {},
         "success": function (data) {
             var times = [], values = [];
