@@ -20,3 +20,7 @@ Load `https://jbithell.github.io/SolarEdgeESign/index.html` in your browser pass
 
 ### AutoUpdate
 The data on the screen is refreshed every `30 minutes` (from the time it was first loaded), except between the hours of `9pm` and `6am` when updates are disabled to save API key quota usage (the data won't change during that time anyway - the sun has gone in!)
+
+## Background Colour
+
+This system supports screens with a black background - just pass `&black=true` as part of the URL

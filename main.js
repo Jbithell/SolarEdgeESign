@@ -103,6 +103,12 @@ var getdata = function () {
     });
 };
 $( document ).ready(function() {
+    if (typeof $.QueryString["black"] !== 'undefined' && $.QueryString["black"] == "true") {
+        //Black background mode
+        console.log("Black Background")
+        $('body').css('background-color', 'black');
+        $('body').css('color', 'white');
+    }
     sitecode = $.QueryString["code"];
     apikey = $.QueryString["key"];
     if (typeof sitecode === 'undefined' || !sitecode || typeof apikey === 'undefined' || !apikey || sitecode.length <6 || apikey.length <1 ) {
