@@ -9,11 +9,11 @@
     width: 99%;
 }
 body {
-    font-size: 40px;
+    font-size: 20px;
     text-align: center;
 }
 .modal-dialog {
-    font-size: 20px;
+    font-size: 10px;
 }
 #lastupdated {
     text-align: right;
