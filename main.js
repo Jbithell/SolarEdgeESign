@@ -52,49 +52,51 @@ var getdata = function () {
 
                 values.push(value.value);
             });
-            console.log();
-            var ctx = document.getElementById("lastWeekGraph").getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: times,
-                    xValueType: "dateTime",
-                    label: "",
-                    datasets: [{
-                        data: values,
-                        fill:false,
-                        borderColor:"rgb(0, 0, 0)",
-                    }]
-
-                },
-                options: {
-                    animation: {
-                        duration: 0, // Turn off animations as this is for a screen
-                    },
-                    hover: {
-                        animationDuration: 0, // Turn off animations as this is for a screen
-                    },
-                    responsiveAnimationDuration: 0, // Turn off animations as this is for a screen
-                    legend: {
-                        display: false
-                    },
-                    scales: {
-                        xAxes: [{
-                            type: 'time',
-                            position: 'bottom',
-                            time: {
-                                unit: "day",
-                            },
-                        }],
-                        yAxes: [{
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Power (W)'
-                            }
+            if (typeof $.QueryString["graph"] !== 'undefined' && $.QueryString["graph"] == "true") {
+                $(".graphHide").show();
+                var ctx = document.getElementById("lastWeekGraph").getContext('2d');
+                var myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: times,
+                        xValueType: "dateTime",
+                        label: "",
+                        datasets: [{
+                            data: values,
+                            fill:false,
+                            borderColor:"rgb(0, 0, 0)",
                         }]
+
                     },
-                }
-            });
+                    options: {
+                        animation: {
+                            duration: 0, // Turn off animations as this is for a screen
+                        },
+                        hover: {
+                            animationDuration: 0, // Turn off animations as this is for a screen
+                        },
+                        responsiveAnimationDuration: 0, // Turn off animations as this is for a screen
+                        legend: {
+                            display: false
+                        },
+                        scales: {
+                            xAxes: [{
+                                type: 'time',
+                                position: 'bottom',
+                                time: {
+                                    unit: "day",
+                                },
+                            }],
+                            yAxes: [{
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Power (W)'
+                                }
+                            }]
+                        },
+                    }
+                });
+            }
             $("#lastupdated").html("Updated: " + Date());
         },
         "error": function (d, msg) {
@@ -103,6 +105,17 @@ var getdata = function () {
     });
 };
 $( document ).ready(function() {
+    if (typeof $.QueryString["zoom"] !== 'undefined' && isNaN($.QueryString["zoom"]) !== true) {
+        //Set page zoom
+        if ($.QueryString["zoom"] > 1 || $.QueryString["zoom"] < 0.01) {
+            var scale = 'scale(1)';
+        } else {
+            var scale = 'scale(' + $.QueryString["zoom"] + ')';
+        }
+        document.body.style.webkitTransform = scale;    // Chrome, Opera, Safari
+        document.body.style.msTransform = scale;       // IE 9
+        document.body.style.transform = scale;     // General
+    }
     if (typeof $.QueryString["black"] !== 'undefined' && $.QueryString["black"] == "true") {
         //Black background mode
         console.log("Black Background")
